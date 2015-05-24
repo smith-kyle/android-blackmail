@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:id="@+id/schedule_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.8"
+            android:orientation="horizontal"
+            android:paddingLeft="0dp"
+            android:paddingRight="20dp"
+            android:background="@color/DodgerBlue">
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="fill_parent"
+                android:paddingLeft="0dp"
+                android:id="@+id/back_btn"
+                android:src="@drawable/ic_action_back"
+                android:background="@drawable/titlebar_button" />
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/blackmail_icon7"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="6"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:gravity="center_vertical"
+                android:textSize="25dp"/>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6.5"
+        android:orientation="vertical"
+        android:padding="20dp">
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:hint="Title"
+            android:maxLines="1"
+            android:maxLength="26"
+            android:id="@+id/title"/>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnDatePicker"
+                android:layout_width="30dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:onClick="onClick"
+                />
+            <Button
+                android:id="@+id/btnTimePicker"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:onClick="onClick"
+                android:layout_height="50dp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="16.5">
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="0dp"
+            android:name="com.google.android.gms.maps.MapFragment"/>
+        <ImageView android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/apptAreaBox"
+            android:src="@drawable/map_overlay"/>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:background="#88000000"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textColor="@color/white"
+            android:text="@string/map_instructions"/>
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="0dp"
+        android:onClick="onClick"
+        android:id="@+id/submit_appt_btn"
+        android:background="@color/LimeGreen"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:layout_weight="2.5"
+        android:text="@string/submit_appt_btn"/>
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/progressBarHolder"
+        android:animateLayoutChanges="true"
+        android:visibility="invisible"
+        android:alpha="0.4"
+        android:background="#000000"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:layout_gravity="center" />
+    </FrameLayout>
+</RelativeLayout>
