@@ -4,3 +4,6 @@
 res/drawable-mdpi/
 res/drawable-xhdpi/
 res/drawable-xxhdpi/
+
+# Passwords and what not
+ApiConstants.java
