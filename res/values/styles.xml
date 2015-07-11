@@ -11,7 +11,7 @@
     </style>
 
     <style name="text.p">
-        <item name="android:textSize" >14dp</item>
+        <item name="android:textSize" >12dp</item>
         <item name="android:ellipsize">none</item>
         <item name="android:maxLines">100</item>
         <item name="android:scrollHorizontally">false</item>
@@ -21,43 +21,58 @@
     </style>
 
     <style name="img">
-        <item name="android:width">20dp</item>
-        <item name="android:height">20dp</item>
+        <item name="android:width">12dp</item>
+        <item name="android:height">12dp</item>
+        <item name="android:layout_marginRight">10dp</item>
     </style>
 
     <style name="button">
         <item name="android:background">@color/secondary</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:textSize">15dp</item>
-        <item name="android:layout_margin">10dp</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:layout_margin">4dp</item>
         <item name="android:text">@string/filler_button</item>
     </style>
 
+    <style name="button.dim">
+        <item name="android:background">@color/secondary_dim</item>
+    </style>
     <style name="text.h1">
         <item name="android:textSize">45dp</item>
         <item name="android:gravity">center</item>
     </style>
 
     <style name="text.h2">
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:text">@string/filler_title</item>
     </style>
 
     <style name="ul">
-        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_margin">25dp</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginTop">0dp</item>
     </style>
 
     <style name="li">
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:alpha">0</item>
     </style>
 
     <style name="signup_instruction">
         <item name="android:gravity">center</item>
+        <item name="android:layout_marginLeft">10dp</item>
     </style>
 
     <style name="center">
         <item name="android:gravity">center</item>
+    </style>
+
+    <style name="button_container">
+        <item name="android:alpha">0</item>
+        <item name="android:layout_margin">20dp</item>
+        <item name="android:padding">7dp</item>
     </style>
 </resources>
