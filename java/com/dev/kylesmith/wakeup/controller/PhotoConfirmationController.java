@@ -20,7 +20,6 @@ import com.dev.kylesmith.wakeup.model.Converters.UriToBitmap;
 public class PhotoConfirmationController extends Activity {
     ImageView photo, mailIcon;
     byte[] img;
-    UriToBitmap uriToBitmap = new UriToBitmap();
     BitmapToByteArray bitmapToByteArray = new BitmapToByteArray();
 
     @Override
@@ -35,7 +34,7 @@ public class PhotoConfirmationController extends Activity {
         photo = (ImageView) findViewById(R.id.mailIcon);
 
         Uri u = Uri.parse(getIntent().getStringExtra(Constants.EXTRA_PHOTOURI));
-        photo.setImageBitmap(uriToBitmap.Convert(u, this));
+        photo.setImageBitmap(UriToBitmap.Convert(u, this));
 
         animatePhoto();
     }

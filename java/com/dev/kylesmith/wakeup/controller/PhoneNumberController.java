@@ -30,8 +30,6 @@ import com.google.android.gms.plus.People;
  */
 public class PhoneNumberController extends Activity implements AsyncResponse{
     private static final int PICK_CONTACT_REQUEST = 1;
-    BitmapToByteArray bitmapToByteArray = new BitmapToByteArray();
-    UriToBitmap uriToBitmap = new UriToBitmap();
     AddUserTask addUserTask = new AddUserTask();
     FrameLayout progressBarHolder;
     EditText phone_num;
@@ -56,7 +54,7 @@ public class PhoneNumberController extends Activity implements AsyncResponse{
         outAnimation.setDuration(200);
 
         u = Uri.parse(getIntent().getStringExtra(Constants.EXTRA_PHOTOURI));
-        photo = bitmapToByteArray.Convert(uriToBitmap.Convert(Uri.parse(getIntent().getStringExtra(Constants.EXTRA_PHOTOURI)), this));
+        photo = BitmapToByteArray.Convert(UriToBitmap.Convert(Uri.parse(getIntent().getStringExtra(Constants.EXTRA_PHOTOURI)), this));
         addUserTask.delegate = this;
         progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
 

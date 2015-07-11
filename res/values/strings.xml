@@ -26,10 +26,21 @@
     <string name="drawer_item_add">Add Appointment</string>
     <string name="drawer_item_settings">Settings</string>
     <string name="drawer_item_about">About</string>
+    <string name="btn_login">Log in</string>
+    <string name="btn_register">Sign Up</string>
+    <string name="signup_addAClass">Add a Class</string>
+    <string name="signup_addAClassSub">Track the time and location of your lectures.</string>
+    <string name="signup_attendClass">Attend</string>
+    <string name="signup_attendClassSub">Check in to let us know that you\'ve made it on time.</string>
+    <string name="signup_saveYourRep">Save Your Reputation</string>
+    <string name="signup_saveYourRepSub">Miss class and an embarrassing photo of you will be posted to Facebook.</string>
     <string name="settings_photo_label">Embarrassing photo</string>
     <string name="settings_phone_num_label">Phone number to be sent to</string>
     <string name="app_explanation">Blackmail encourages users to arrive at their appointments on time by blackmailing them with an embarrassing photo.</string>
     <string name="warning">Warning:</string>
+    <string name="filler_title">Title</string>
+    <string name="filler_button">Click Me</string>
+    <string name="filler_p">Lorem ipsum sans limier this is some long filler title that will probably wrap to two lines</string>
     <string name="app_warning">The embarrassing photo, phone number, and appointments are stored in the cloud. So no matter if the application is uninstalled, the photo will be sent if the user does not check in to their appointment on time.</string>
     <string-array name="drawer_items">
         <item>Home</item>

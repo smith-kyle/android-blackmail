@@ -27,7 +27,7 @@ public class ScheduleCursorAdapter extends SimpleCursorAdapter{
     @Override
     public void setViewText(TextView v, String text) {
         if(v.getId() == R.id.appt_time){
-            Date apptDatetime = STD.StringToDate(text);
+            Date apptDatetime = StringToDate.Convert(text);
             DateFormat dateFormat = new SimpleDateFormat("MMM d hh:mm a");
 
             // Check if the appointment is too late

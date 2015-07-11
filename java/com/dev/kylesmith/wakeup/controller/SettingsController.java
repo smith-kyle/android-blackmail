@@ -24,7 +24,6 @@ public class SettingsController extends Activity{
     TextView phoneNumTextView;
     ImageView photoImageView;
     ImageButton backButton;
-    UriToBitmap UTB = new UriToBitmap();
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -35,7 +34,7 @@ public class SettingsController extends Activity{
         phoneNumTextView = (TextView)findViewById(R.id.settings_phone_num);
         phoneNumTextView.setText(userInfo.get(Constants.MAPKEY_PHONE_NUM).toString());
         photoImageView = (ImageView)findViewById(R.id.settings_photo);
-        photoImageView.setImageBitmap(UTB.Convert(Uri.parse(userInfo.get(Constants.MAPKEY_PHOTO_URI).toString()), this));
+        photoImageView.setImageBitmap(UriToBitmap.Convert(Uri.parse(userInfo.get(Constants.MAPKEY_PHOTO_URI).toString()), this));
         backButton = (ImageButton)findViewById(R.id.back_btn);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

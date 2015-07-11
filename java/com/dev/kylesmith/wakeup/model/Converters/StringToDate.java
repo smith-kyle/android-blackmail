@@ -10,7 +10,7 @@ import java.util.Locale;
  * Created by kylesmith on 1/12/15.
  */
 public class StringToDate {
-    public Date StringToDate(String date){
+    public static Date Convert(String date){
         DateFormat format = new SimpleDateFormat("EEE MMM dd kk:mm:ss zzz yyyy", Locale.ENGLISH);
         Date result = new Date();
         try {

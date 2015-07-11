@@ -9,7 +9,7 @@ import android.provider.MediaStore;
  * Created by kylesmith on 1/16/15.
  */
 public class UriToBitmap {
-    public Bitmap Convert(Uri u, Context context){
+    public static Bitmap Convert(Uri u, Context context){
         Bitmap bitmap, scaled = null;
         try {
             bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), u);

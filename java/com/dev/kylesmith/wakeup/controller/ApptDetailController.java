@@ -164,8 +164,7 @@ public class ApptDetailController extends Activity implements OnMapReadyCallback
 
 
     private static Date getApptTime(String dateString){
-        StringToDate conv = new StringToDate();
-        return conv.StringToDate(dateString);
+        return StringToDate.Convert(dateString);
     }
 
 
