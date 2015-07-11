@@ -1,1 +1,6 @@
 .DS_Store
+
+# Larger Icons
+res/drawable-mdpi/
+res/drawable-xhdpi/
+res/drawable-xxhdpi/
