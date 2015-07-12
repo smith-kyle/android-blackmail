@@ -1,16 +1,15 @@
 package com.dev.kylesmith.wakeup.controller;
 
-import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.dev.kylesmith.wakeup.R;
@@ -27,22 +26,38 @@ public class IntroController extends Activity {
     @Bind(R.id.signupInstructionsLi2) LinearLayout mInstruction2;
     @Bind(R.id.signupInstructionsLi3) LinearLayout mInstruction3;
     @Bind(R.id.buttons_container) LinearLayout mButtonsContainer;
+    @Bind(R.id.signup_btn) Button mSignupBtn;
+    @Bind(R.id.login_btn) Button mLoginBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Remove title bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
-
         setLayout();
         ButterKnife.bind(this);
 
         startIntroAnimation();
+
+        mSignupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SignupController.class);
+                startActivity(intent);
+            }
+        });
+
+        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     private void startIntroAnimation(){
         int fadeInDuration = 500;
-        int startDelay = 300;
+        int startDelay = 400;
 
         ValueAnimator fadeIn1 = ObjectAnimator.ofFloat(mInstruction1, "alpha", 0f, 1f);
         fadeIn1.setDuration(fadeInDuration);
@@ -71,18 +86,18 @@ public class IntroController extends Activity {
 
 
     private void setLayout(){
-        if (false) {
+        if (isLoggedIn()) {
             Intent intent = new Intent(this, ScheduleController.class);
             startActivity(intent);
         }
         else{
-            setContentView(R.layout.activity_signup);
+            setContentView(R.layout.activity_intro);
         }
     }
 
 
     private boolean isLoggedIn(){
         SharedPreferences settings = getSharedPreferences(Constants.PREFS_NAME, 0);
-        return settings.getBoolean(Constants.PREFS_FIRST_TIME, true);
+        return settings.getBoolean(Constants.PREFS_IS_LOGGED_IN, false);
     }
 }

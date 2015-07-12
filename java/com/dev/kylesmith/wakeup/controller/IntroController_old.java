@@ -39,9 +39,9 @@ public class IntroController_old extends Activity {
         setImgUri();
 
         SharedPreferences settings = getSharedPreferences(Constants.PREFS_NAME, 0);
-        if (settings.getBoolean(Constants.PREFS_FIRST_TIME, true)) {
-            setContentView(R.layout.activity_intro);
-            settings.edit().putBoolean(Constants.PREFS_FIRST_TIME, false).commit();
+        if (settings.getBoolean(Constants.PREFS_IS_LOGGED_IN, true)) {
+            setContentView(R.layout.activity_intro_old);
+            settings.edit().putBoolean(Constants.PREFS_IS_LOGGED_IN, false).commit();
         }
         else{
             Intent intent = new Intent(this, ScheduleController.class);
