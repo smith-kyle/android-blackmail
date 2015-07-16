@@ -48,6 +48,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 
+import butterknife.Bind;
+
 /**
  * Created by kylesmith on 1/9/15.
  */
@@ -60,16 +62,17 @@ public class NewApptController extends Activity implements DatePickerDialog.OnDa
     private Calendar calendar;
     private DateFormat dateFormat;
     private SimpleDateFormat timeFormat;
-    private Button datePickerBtn;
-    private Button timePickerBtn;
-    private EditText titleTxt;
     private GoogleMap map;
     private DistanceConverter distanceConverter = new DistanceConverter();
     private GoogleMapOptions options = new GoogleMapOptions();
     private long NewApptID;
-    private Button createAppt_btn;
-    private FrameLayout progressBarHolder;
-
+    @Bind(R.id.map) MapFragment mapFragment;
+    @Bind(R.id.btnDatePicker) Button datePickerBtn;
+    @Bind(R.id.btnTimePicker) Button timePickerBtn;
+    @Bind(R.id.title) EditText titleTxt;
+    @Bind(R.id.progressBarHolder) FrameLayout progressBarHolder;
+    @Bind(R.id.submit_appt_btn)  Button createAppt_btn;
+    @Bind(R.id.back_btn) ImageButton backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,8 +82,6 @@ public class NewApptController extends Activity implements DatePickerDialog.OnDa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newappt);
         setupUI(findViewById(R.id.schedule_parent));
-        MapFragment mapFragment = (MapFragment) getFragmentManager()
-                .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         addApptTask.delegate = this;
@@ -97,15 +98,6 @@ public class NewApptController extends Activity implements DatePickerDialog.OnDa
         dateFormat = DateFormat.getDateInstance(DateFormat.LONG, Locale.getDefault());
         timeFormat = new SimpleDateFormat(TIME_PATTERN, Locale.getDefault());
 
-
-        datePickerBtn = (Button) findViewById(R.id.btnDatePicker);
-        timePickerBtn = (Button) findViewById(R.id.btnTimePicker);
-        titleTxt = (EditText) findViewById(R.id.title);
-        progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
-        createAppt_btn = (Button) findViewById(R.id.submit_appt_btn);
-
-
-        ImageButton backButton = (ImageButton)findViewById(R.id.back_btn);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

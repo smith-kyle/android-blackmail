@@ -38,10 +38,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 /**
  * Created by kylesmith on 1/12/15.
  */
 public class ApptDetailController extends Activity implements OnMapReadyCallback, AsyncResponse {
+    @Bind(R.id.titleTextView) TextView titleTextView;
+    @Bind(R.id.timeTextView) TextView timeTextView;
+    @Bind(R.id.dateTextView) TextView dateTextView;
 
     private GoogleMapOptions options = new GoogleMapOptions();
     private GoogleMap map;
@@ -49,9 +55,6 @@ public class ApptDetailController extends Activity implements OnMapReadyCallback
     private static DBAccessor dbAccessor;
     private static Context context;
     private static Intent intent;
-    private static TextView titleTextView;
-    private static TextView timeTextView;
-    private static TextView dateTextView;
     private static float zoomLevel = 0;
     private static LatLng apptLocation;
     private static Date apptTime;
@@ -76,6 +79,8 @@ public class ApptDetailController extends Activity implements OnMapReadyCallback
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apptdetail);
+        ButterKnife.bind(this);
+
         context = getApplicationContext();
         intent = getIntent();
         deleteApptTask.delegate = this;
@@ -84,9 +89,6 @@ public class ApptDetailController extends Activity implements OnMapReadyCallback
         timeFormat = new SimpleDateFormat(TIME_PATTERN, Locale.getDefault());
 
         // Find all view components
-        titleTextView = (TextView) findViewById(R.id.titleTextView);
-        timeTextView = (TextView) findViewById(R.id.timeTextView);
-        dateTextView = (TextView) findViewById(R.id.dateTextView);
         progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
         checkinBtn = (Button) findViewById(R.id.checkin_btn);
         populateView();
@@ -119,7 +121,7 @@ public class ApptDetailController extends Activity implements OnMapReadyCallback
 
 
 
-    private static void populateView(){
+    private void populateView(){
         // Get appointment data from DB
         dbAccessor = new DBAccessor(context);
         id = intent.getLongExtra(Constants.ID, 0);

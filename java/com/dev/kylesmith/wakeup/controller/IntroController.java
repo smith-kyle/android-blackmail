@@ -17,6 +17,7 @@ import com.dev.kylesmith.wakeup.model.Constants;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by kylesmith on 7/8/15.
@@ -38,21 +39,17 @@ public class IntroController extends Activity {
         ButterKnife.bind(this);
 
         startIntroAnimation();
+    }
 
-        mSignupBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SignupController.class);
-                startActivity(intent);
-            }
-        });
+    @OnClick(R.id.signup_btn)
+    public void openSignup(){
+        Intent intent = new Intent(getApplicationContext(), SignupController.class);
+        startActivity(intent);
+    }
 
-        mLoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+    @OnClick(R.id.login_btn)
+    public void openLogin(){
+        // TODO: Create signup
     }
 
     private void startIntroAnimation(){
