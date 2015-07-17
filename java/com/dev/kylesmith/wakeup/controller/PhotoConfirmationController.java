@@ -14,11 +14,13 @@ import com.dev.kylesmith.wakeup.model.Constants;
 import com.dev.kylesmith.wakeup.model.Converters.BitmapToByteArray;
 import com.dev.kylesmith.wakeup.model.Converters.UriToBitmap;
 
+import butterknife.Bind;
+
 /**
  * Created by kylesmith on 1/12/15.
  */
 public class PhotoConfirmationController extends Activity {
-    ImageView photo, mailIcon;
+    @Bind(R.id.mailIcon) ImageView photo;
     byte[] img;
     BitmapToByteArray bitmapToByteArray = new BitmapToByteArray();
 
@@ -29,9 +31,6 @@ public class PhotoConfirmationController extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_displayphoto);
-
-        photo = (ImageView) findViewById(R.id.photoImageView);
-        photo = (ImageView) findViewById(R.id.mailIcon);
 
         Uri u = Uri.parse(getIntent().getStringExtra(Constants.EXTRA_PHOTOURI));
         photo.setImageBitmap(UriToBitmap.Convert(u, this));
@@ -65,7 +64,6 @@ public class PhotoConfirmationController extends Activity {
 
     private void startNextActivity(){
         Intent intent = new Intent(getApplicationContext(), PhoneNumberController.class);
-        //intent.putExtra(Constants.EXTRA_PHOTOBYTEARRAY, bitmapToByteArray.Convert(bitmap));
         this.startActivity(intent);
     }
 

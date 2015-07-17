@@ -49,6 +49,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 /**
  * Created by kylesmith on 1/9/15.
@@ -66,7 +67,8 @@ public class NewApptController extends Activity implements DatePickerDialog.OnDa
     private DistanceConverter distanceConverter = new DistanceConverter();
     private GoogleMapOptions options = new GoogleMapOptions();
     private long NewApptID;
-    @Bind(R.id.map) MapFragment mapFragment;
+    private MapFragment mapFragment;
+
     @Bind(R.id.btnDatePicker) Button datePickerBtn;
     @Bind(R.id.btnTimePicker) Button timePickerBtn;
     @Bind(R.id.title) EditText titleTxt;
@@ -82,6 +84,7 @@ public class NewApptController extends Activity implements DatePickerDialog.OnDa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newappt);
         setupUI(findViewById(R.id.schedule_parent));
+        mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         addApptTask.delegate = this;
@@ -98,16 +101,13 @@ public class NewApptController extends Activity implements DatePickerDialog.OnDa
         dateFormat = DateFormat.getDateInstance(DateFormat.LONG, Locale.getDefault());
         timeFormat = new SimpleDateFormat(TIME_PATTERN, Locale.getDefault());
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
         update();
     }
 
+    @OnClick(R.id.back_btn)
+    public void submit(){
+        onBackPressed();
+    }
 
     @Override
     public void onBackPressed(){

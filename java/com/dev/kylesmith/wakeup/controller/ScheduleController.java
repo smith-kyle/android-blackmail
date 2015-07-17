@@ -9,8 +9,6 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -20,7 +18,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -38,6 +35,8 @@ import com.dev.kylesmith.wakeup.model.DrawerItem;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import butterknife.Bind;
+
 /**
  * Created by kylesmith on 1/8/15.
  */
@@ -45,14 +44,11 @@ public class ScheduleController extends ListActivity
     implements LoaderManager.LoaderCallbacks<Cursor>{
     SimpleCursorAdapter mAdapter;
     private static String[] DrawerItems;
-    private ImageView drawer_photo;
     private ActionBarDrawerToggle DrawerToggle;
-    private ImageButton AddFirstApptBtn;
-    private Toolbar toolbar;
-    private DBAccessor dbAccessor;
     private HashMap<String, Object> userInfo = new HashMap<>();
-    DrawerLayout drawerLayout;
-    ListView drawerItems;
+    @Bind(R.id.drawer_btn) Toolbar toolbar;
+    @Bind(R.id.drawer_layout) DrawerLayout drawerLayout;
+    @Bind(R.id.menu_list) ListView drawerItems;
     private static ArrayList<DrawerItem> MenuItems = new ArrayList<DrawerItem>();
     private static final String[] PROJECTION = {
             DBContract.Appointments._ID,
@@ -70,11 +66,6 @@ public class ScheduleController extends ListActivity
 
         createMenuItems();
         DrawerItems = getResources().getStringArray(R.array.drawer_items);
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerItems = (ListView) findViewById(R.id.menu_list);
-        //drawer_photo = (ImageView)findViewById(R.id.embarrassing_photo);
-        toolbar = (Toolbar) findViewById(R.id.drawer_btn);
-        AddFirstApptBtn = (ImageButton)findViewById(R.id.add_appt_btn);
 
         drawerItems.setAdapter(new DrawerItemsAdapter(MenuItems, this));
         drawerItems.setOnItemClickListener(new DrawerItemClickListener());
@@ -109,12 +100,6 @@ public class ScheduleController extends ListActivity
         setListAdapter(mAdapter);
 
         getLoaderManager().initLoader(0, null, this);
-
-//        // Set embarrassing image in drawer
-//        dbAccessor = new DBAccessor(this);
-//        userInfo = dbAccessor.getUserInfo();
-//        Uri embarrassingPhotoUri = Uri.parse((String)userInfo.get(Constants.MAPKEY_PHOTO_URI));
-//        drawer_photo.setImageURI(embarrassingPhotoUri);
     }
 
 

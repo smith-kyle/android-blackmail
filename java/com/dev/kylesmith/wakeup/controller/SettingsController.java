@@ -15,15 +15,18 @@ import com.dev.kylesmith.wakeup.model.DB.DBAccessor;
 
 import java.util.HashMap;
 
+import butterknife.Bind;
+import butterknife.OnClick;
+
 /**
  * Created by kylesmith on 1/24/15.
  */
 public class SettingsController extends Activity{
     DBAccessor dbAccessor = new DBAccessor(this);
     HashMap<String, Object> userInfo = new HashMap<>();
-    TextView phoneNumTextView;
-    ImageView photoImageView;
-    ImageButton backButton;
+    @Bind(R.id.settings_phone_num) TextView phoneNumTextView;
+    @Bind(R.id.settings_photo) ImageView photoImageView;
+    @Bind(R.id.back_btn) ImageButton backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -31,17 +34,13 @@ public class SettingsController extends Activity{
         setContentView(R.layout.activity_settings);
 
         userInfo = dbAccessor.getUserInfo();
-        phoneNumTextView = (TextView)findViewById(R.id.settings_phone_num);
         phoneNumTextView.setText(userInfo.get(Constants.MAPKEY_PHONE_NUM).toString());
-        photoImageView = (ImageView)findViewById(R.id.settings_photo);
         photoImageView.setImageBitmap(UriToBitmap.Convert(Uri.parse(userInfo.get(Constants.MAPKEY_PHOTO_URI).toString()), this));
-        backButton = (ImageButton)findViewById(R.id.back_btn);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+    }
+
+    @OnClick(R.id.back_btn)
+    public void submit(){
+        onBackPressed();
     }
 
     @Override
