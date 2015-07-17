@@ -42,7 +42,7 @@
     <string name="filler_button">Click Me</string>
     <string name="filler_p">Lorem ipsum sans limier this is some long filler title that will probably wrap to two lines</string>
     <string name="app_warning">The embarrassing photo, phone number, and appointments are stored in the cloud. So no matter if the application is uninstalled, the photo will be sent if the user does not check in to their appointment on time.</string>
-    <string name="facebook_app_id">1552481061662122</string>
+    <string name="facebook_app_id">524592427688050</string>
     <string-array name="drawer_items">
         <item>Home</item>
         <item>Add Appointment</item>
