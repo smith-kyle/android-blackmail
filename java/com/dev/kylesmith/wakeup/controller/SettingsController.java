@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 import com.dev.kylesmith.wakeup.R;
 import com.dev.kylesmith.wakeup.model.Constants;
-import com.dev.kylesmith.wakeup.model.Converters.UriToBitmap;
 import com.dev.kylesmith.wakeup.model.DB.DBAccessor;
+import com.dev.kylesmith.wakeup.util.Convert;
 
 import java.util.HashMap;
 
@@ -35,7 +35,7 @@ public class SettingsController extends Activity{
 
         userInfo = dbAccessor.getUserInfo();
         phoneNumTextView.setText(userInfo.get(Constants.MAPKEY_PHONE_NUM).toString());
-        photoImageView.setImageBitmap(UriToBitmap.Convert(Uri.parse(userInfo.get(Constants.MAPKEY_PHOTO_URI).toString()), this));
+        photoImageView.setImageBitmap(Convert.uriToBitmap(Uri.parse(userInfo.get(Constants.MAPKEY_PHOTO_URI).toString()), this));
     }
 
     @OnClick(R.id.back_btn)

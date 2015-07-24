@@ -11,8 +11,7 @@ import android.widget.ImageView;
 
 import com.dev.kylesmith.wakeup.R;
 import com.dev.kylesmith.wakeup.model.Constants;
-import com.dev.kylesmith.wakeup.model.Converters.BitmapToByteArray;
-import com.dev.kylesmith.wakeup.model.Converters.UriToBitmap;
+import com.dev.kylesmith.wakeup.util.Convert;
 
 import butterknife.Bind;
 
@@ -22,7 +21,6 @@ import butterknife.Bind;
 public class PhotoConfirmationController extends Activity {
     @Bind(R.id.mailIcon) ImageView photo;
     byte[] img;
-    BitmapToByteArray bitmapToByteArray = new BitmapToByteArray();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +31,7 @@ public class PhotoConfirmationController extends Activity {
         setContentView(R.layout.activity_displayphoto);
 
         Uri u = Uri.parse(getIntent().getStringExtra(Constants.EXTRA_PHOTOURI));
-        photo.setImageBitmap(UriToBitmap.Convert(u, this));
+        photo.setImageBitmap(Convert.uriToBitmap(u, this));
 
         animatePhoto();
     }

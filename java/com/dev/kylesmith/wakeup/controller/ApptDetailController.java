@@ -19,12 +19,12 @@ import android.widget.Toast;
 
 import com.dev.kylesmith.wakeup.R;
 import com.dev.kylesmith.wakeup.model.Constants;
-import com.dev.kylesmith.wakeup.model.Converters.StringToDate;
 import com.dev.kylesmith.wakeup.model.DB.DBAccessor;
 import com.dev.kylesmith.wakeup.model.DB.DBContract;
 import com.dev.kylesmith.wakeup.model.Location.CheckIn;
 import com.dev.kylesmith.wakeup.model.ServerInterface.AsyncResponse;
 import com.dev.kylesmith.wakeup.model.ServerInterface.DeleteApptTask;
+import com.dev.kylesmith.wakeup.util.Convert;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMapOptions;
@@ -59,7 +59,6 @@ public class ApptDetailController extends Activity implements OnMapReadyCallback
     private static LatLng apptLocation;
     private static Date apptTime;
     private static float  apptBoxSize;
-    private static StringToDate stringToDate = new StringToDate();
     private static DateFormat dateFormat;
     private static DateFormat timeFormat;
     private static String linekey;
@@ -166,7 +165,7 @@ public class ApptDetailController extends Activity implements OnMapReadyCallback
 
 
     private static Date getApptTime(String dateString){
-        return StringToDate.Convert(dateString);
+        return Convert.stringToDate(dateString);
     }
 
 

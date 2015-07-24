@@ -18,11 +18,10 @@ import android.widget.ImageButton;
 
 import com.dev.kylesmith.wakeup.R;
 import com.dev.kylesmith.wakeup.model.Constants;
-import com.dev.kylesmith.wakeup.model.Converters.BitmapToByteArray;
-import com.dev.kylesmith.wakeup.model.Converters.UriToBitmap;
 import com.dev.kylesmith.wakeup.model.DB.DBAccessor;
 import com.dev.kylesmith.wakeup.model.ServerInterface.AddUserTask;
 import com.dev.kylesmith.wakeup.model.ServerInterface.AsyncResponse;
+import com.dev.kylesmith.wakeup.util.Convert;
 import com.google.android.gms.plus.People;
 
 /**
@@ -52,9 +51,8 @@ public class PhoneNumberController extends Activity implements AsyncResponse{
         inAnimation.setDuration(200);
         outAnimation = new AlphaAnimation(1f, 0f);
         outAnimation.setDuration(200);
-
         u = Uri.parse(getIntent().getStringExtra(Constants.EXTRA_PHOTOURI));
-        photo = BitmapToByteArray.Convert(UriToBitmap.Convert(Uri.parse(getIntent().getStringExtra(Constants.EXTRA_PHOTOURI)), this));
+        photo = Convert.bitmapToByteArray(Convert.uriToBitmap(Uri.parse(getIntent().getStringExtra(Constants.EXTRA_PHOTOURI)), this));
         addUserTask.delegate = this;
         progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
 
