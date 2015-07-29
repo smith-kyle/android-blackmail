@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
 import java.text.DateFormat;
@@ -51,5 +52,22 @@ public class Convert {
             e.printStackTrace();
         }
         return scaled;
+    }
+
+    public static float ZoomLevelToDistance(Float z){
+        double E = 21638.8;
+        float d = (float) (E / Math.pow(2, z - 1));
+        return d;
+    }
+
+    public static float DistanceToZoomLevel(Float d){
+        byte z=1;
+        double E = 40075;
+        Log.i("Astrology", "result: " + (Math.log(E / d) / Math.log(2) + 1));
+        z = (byte) Math.round(Math.log(E/d)/Math.log(2)+1);
+        // to avoid exeptions
+        if (z>21) z=21;
+        if (z<1) z =1;
+        return z;
     }
 }

@@ -35,9 +35,9 @@ import java.util.HashMap;
 import java.util.Locale;
 
 import com.dev.kylesmith.wakeup.R;
+import com.dev.kylesmith.wakeup.util.Convert;
 import com.dev.kylesmith.wakeup.model.Constants;
 import com.dev.kylesmith.wakeup.model.DB.DBAccessor;
-import com.dev.kylesmith.wakeup.model.Location.DistanceConverter;
 import com.dev.kylesmith.wakeup.model.ServerInterface.AddApptTask;
 import com.dev.kylesmith.wakeup.model.ServerInterface.AsyncResponse;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -64,7 +64,6 @@ public class NewApptController extends Activity implements DatePickerDialog.OnDa
     private DateFormat dateFormat;
     private SimpleDateFormat timeFormat;
     private GoogleMap map;
-    private DistanceConverter distanceConverter = new DistanceConverter();
     private GoogleMapOptions options = new GoogleMapOptions();
     private long NewApptID;
     private MapFragment mapFragment;
@@ -201,7 +200,7 @@ public class NewApptController extends Activity implements DatePickerDialog.OnDa
 
 
     private float getSelectedAreaWidth(){
-        float d = distanceConverter.ZoomLevelToDistance(map.getCameraPosition().zoom);
+        float d = Convert.ZoomLevelToDistance(map.getCameraPosition().zoom);
         DisplayMetrics displayMetrics = getApplicationContext().getResources().getDisplayMetrics();
 
         float screenWidth = displayMetrics.widthPixels / displayMetrics.density;
