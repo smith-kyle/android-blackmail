@@ -49,7 +49,7 @@ public class IntroController extends Activity {
 
     @OnClick(R.id.login_btn)
     public void openLogin(){
-        // TODO: Create signup
+        // TODO: Create login
     }
 
     private void startIntroAnimation(){
